@@ -1,2 +1,2 @@
 # book-library  
-Book Logo - https://www.reshot.com/free-svg-icons/item/open-book-LFUDNZRY6S/
+Book Logo - https://pictogrammers.com/library/mdi/icon/book-open-page-variant/
