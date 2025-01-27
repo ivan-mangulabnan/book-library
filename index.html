@@ -24,7 +24,11 @@
                                 <input type="search" placeholder="Search author">
                             </form>
                         </li>
-                        <li><a href="">Title</a></li>
+                        <li>
+                            <form>
+                                <input type="search" placeholder="Search title">
+                            </form>
+                        </li>
                     </ul>
                     <div class="hidden-genre">
                         <ul>
@@ -37,43 +41,44 @@
             </div>
         </header>
     </div>
-    <div class="grid-container">
-        <article>
-            <h2>A Song of Ice and Fire</h2>
-            <p>by George R.R Martin</p>
-        </article>
-        <div class="addButton-container">
-            <button type="button">Add a new book</button>
+    <main>
+        <div class="grid-container">
+            <article>
+                <h2>A Song of Ice and Fire</h2>
+                <p>by George R.R Martin</p>
+            </article>
+            <div class="addButton-container">
+                <button type="button">Add a new book</button>
+            </div>
         </div>
-    </div>
-    <div class="dialog-form">
-        <dialog>
-            <form>
-                <div>
-                    <label for="book-title">TITLE</label>
-                    <input type="text" name="title" id="book-title" required>
-                </div>
-                <div>
-                    <label for="book-author">AUTHOR</label>
-                    <input type="text" name="author" id="book-author" required>
-                </div>
-                <div>
-                    <label for="book-pages">PAGES</label>
-                    <input type="number" name="pageCount" id="book-pages" required>
-                </div>
-                <fieldset>
-                    <legend>DID YOU ALREADY READ THIS?</legend>
-                    <input type="radio" id="yes" name="read-status" value="true">
-                    <label for="yes">YES</label>
-                    <input type="radio" id="no" name="read-status" value="false">
-                    <label for="no">NO</label>
-                </fieldset>
-                <button type="button">X</button>
-                <button type="button">ADD</button>
-            </form>
-        </dialog>
-    </div>
-
+        <div class="dialog-form">
+            <dialog>
+                <form>
+                    <div>
+                        <label for="book-title">TITLE</label>
+                        <input type="text" name="title" id="book-title" required>
+                    </div>
+                    <div>
+                        <label for="book-author">AUTHOR</label>
+                        <input type="text" name="author" id="book-author" required>
+                    </div>
+                    <div>
+                        <label for="book-pages">PAGES</label>
+                        <input type="number" name="pageCount" id="book-pages" required>
+                    </div>
+                    <fieldset>
+                        <legend>DID YOU ALREADY READ THIS?</legend>
+                        <input type="radio" id="yes" name="read-status" value="true">
+                        <label for="yes">YES</label>
+                        <input type="radio" id="no" name="read-status" value="false">
+                        <label for="no">NO</label>
+                    </fieldset>
+                    <button type="button">X</button>
+                    <button type="button">ADD</button>
+                </form>
+            </dialog>
+        </div>
+    </main>
 <script src="script.js" defer></script>
 </body>
 </html>
