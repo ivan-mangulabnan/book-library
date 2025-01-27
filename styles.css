@@ -17,4 +17,120 @@
 body {
     font-family: inherit;
     font-size: 100%;
+
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+header {
+    padding: 0 2rem;
+    background-color: #FAF3E0;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 8rem;
+    gap: 1rem;
+}
+
+li {
+    list-style-type: none;
+}
+
+.hidden-genre {
+    display: none;
+}
+
+.show-genre {  /* Class to attach to show */
+    display: initial;
+}
+
+h1,
+h2 {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.img-container {
+    background-image: url("./icons/book-open-page-variant.svg");
+    background-size: contain;
+    width: 6rem;
+    height: 6rem;
+}
+
+.logo-container {
+    font-family: var(--font-body);
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .5rem;
+
+    align-items: center;
+}
+
+.logo-container > h1 {
+    font-size: 2.7rem;
+    font-weight: bold;
+    line-height: 2.7rem;
+}
+
+h1 > span {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-list-container {
+    display: flex;
+}
+
+.nav-list-container > nav {
+    flex: 1;
+
+    display: grid;
+    grid-template-rows: auto;
+    align-content: center
+}
+
+.nav-list-container > nav > ul {
+    display: grid;
+    grid-template-columns: 2fr repeat(2, 1fr);
+    justify-items: flex-start;
+    align-items: center;
+
+    font-family: var(--font-body);
+    font-size: 2.5rem;
+}
+
+.nav-list-container > nav > ul > li:first-of-type {
+    position: relative;
+    font-weight: bold;
+    justify-self: flex-end;
+    padding-right: 7rem;
+}
+
+.nav-list-container > nav > ul > li:first-of-type::after {
+    content: "";
+    background-image: url("./icons/arrow-down-svgrepo-com.svg");
+    background-size: contain;
+    height: 2rem;
+    width: 2rem;
+
+    position: absolute;
+    top: .7rem;
+}
+
+.nav-list-container form {
+    display: grid;
+    align-items: center;
+}
+
+.nav-list-container form > input {
+    appearance: none;
+    border: 3px solid lightgray;
+    border-radius: .5rem;
+
+    font-size: 1.3rem;
+    padding: .5rem 1rem;
 }
