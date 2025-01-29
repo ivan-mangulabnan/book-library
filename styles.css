@@ -17,14 +17,17 @@
 body {
     font-family: inherit;
     font-size: 100%;
+    background-color: #F6F1E4;
 
     display: grid;
-    grid-template-rows: 200px auto;
+    grid-template-rows: 150px auto;
 }
 
 header {
     padding: 0 2rem;
-    background-color: #FAF3E0;
+    background-color: #F4E6D2;
+    box-shadow: 0 5px 10px -5px #444444;
+    border-bottom: 4px solid #9875549f;
     height: 100%;
 
     display: grid;
@@ -37,12 +40,56 @@ li {
     list-style-type: none;
 }
 
-.hidden-genre {
-    display: none;
+.main-list:hover::after {
+    filter: invert(1);
 }
 
-.show-genre {  /* Class to attach to show */
-    display: initial;
+.main-list:hover > a {
+    color: #F7F7F7;
+    text-shadow: 0 0 10px #987554;
+}
+
+.hidden-genre {
+    display: none;
+
+    position: absolute;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: var(--font-additional);
+    top: 50px;
+    right: 75px;
+    background-color: #F7F7F7;
+    border: 3px solid #987554;
+    border-radius: 5px;
+}
+
+.flex-ul {
+    height: 150px;
+    width: 150px;
+
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    padding: 0 5px;
+}
+
+.flex-ul li {
+    padding: 5px 10px;
+    border-left: 5px solid #987554;
+    color: #333333;
+}
+
+.flex-ul li:hover {
+    background-color: #E5D8A1;
+}
+
+.flex-ul li:hover a {
+    color: #F7F7F7;
+}
+
+.main-list:hover .hidden-genre,
+.hidden-genre:hover {
+    display: block;
 }
 
 h1,
@@ -80,6 +127,7 @@ h1 > span {
 
 a {
     text-decoration: none;
+    color: #333333;
 }
 
 .nav-list-container {
@@ -117,6 +165,7 @@ a {
     background-size: contain;
     height: 2rem;
     width: 2rem;
+    cursor: pointer;
 
     position: absolute;
     top: .7rem;
@@ -129,7 +178,7 @@ a {
 
 .nav-list-container form > input {
     appearance: none;
-    border: 3px solid lightgray;
+    border: 3px solid #987554;
     border-radius: .5rem;
 
     font-size: 1.3rem;
@@ -137,6 +186,7 @@ a {
 }
 
 main {
+    padding: 1rem 0;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
 }
@@ -145,8 +195,11 @@ main {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
 
-    border: 1rem double #D1B183;
+    border: 1rem double #987554;
     background-color: #E5D8A1;
+    box-shadow: 5px 5px 10px -5px #444444;
+    border-radius: 5px;
+    height: auto;
 }
 
 .grid-container {
@@ -160,18 +213,17 @@ main {
     gap: 1rem;
 }
 
-article {
+.generated-article {
+    background-color: #FAF3E0;
     border: 2px solid #e5d3b3;
     border-top: 8px solid #987554;
     border-radius: 5px;
     box-shadow: 5px 5px 10px -5px #444444;
-    padding: 3rem 1rem;
+    padding: 1rem 1rem 3rem 1rem;
     height: 450px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: 50px 2fr 1fr;
 }
 
 .generated-title {
@@ -184,4 +236,86 @@ article {
 
 .generated-author {
     font-size: 1.5rem;
+    align-self: flex-end;
+    justify-self: center;
+}
+
+.generated-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+}
+
+.generated-buttons button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.generated-buttons button:hover {
+    box-shadow: 5px 5px 10px -5px #444444;
+}
+
+.read-button {
+    background-image: url("./icons/heart-circle.svg");
+    background-size: contain;
+}
+
+.delete-button {
+    background-image: url("./icons/close-circle-fill.svg");
+    background-size: contain;
+}
+
+.read-button:hover {
+    background-color: #FF66B2;
+}
+
+.read-button:active {
+    background-color: #FF99CC;
+}
+
+.delete-button:hover {
+    background-color: #FF5733;
+}
+
+.delete-button:active {
+    background-color: #FF8A65;
+}
+
+.addButton-container {
+    display: grid;
+    align-items: center;
+    height: 450px;
+    order: 2;
+}
+
+.addButton-container button {
+    appearance: none;
+    background-color: #987554;
+    border: 2px solid #e5d3b3;
+    border-radius: 5px;
+    border-left: 8px solid #FAF3E0;
+    box-shadow: 5px 5px 10px -5px #444444;
+    text-align: center;
+    font-family: var(--font-header);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #F7F7F7;
+    cursor: pointer;
+
+    height: 80px;
+    width: auto;
+}
+
+.addButton-container button:hover {
+    background-color: #C5A572;
+}
+
+.addButton-container button:active {
+    background-color: #D6B88A;
+    color: #987554;
 }
