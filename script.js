@@ -48,7 +48,17 @@ form.addEventListener(`submit`, (event) => {
     showLibrary();
 })
 
+function removeDuplicateBook() {
+    if (myLibrary.length > 1) {
+        const lastBook = document.querySelector(`.grid-container article:last-of-type`);
+        lastBook.remove();
+    }
+}
+
 function showLibrary() {
+
+    removeDuplicateBook();
+
     myLibrary.forEach((item) => {
         const generatedArticle = document.createElement(`article`);
         generatedArticle.classList.add(`generated-article`);
