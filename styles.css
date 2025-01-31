@@ -14,6 +14,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: inherit;
     font-size: 100%;
@@ -45,7 +49,7 @@ li {
 }
 
 .main-list:hover > a {
-    color: #F7F7F7;
+    color: #ffffff;
     text-shadow: 0 0 10px #987554;
 }
 
@@ -318,4 +322,205 @@ main {
 .addButton-container button:active {
     background-color: #D6B88A;
     color: #987554;
+}
+
+.addButton-container button:focus {
+    outline: none;
+}
+
+.dialog-form {
+    height: auto;
+    width: auto;
+}
+
+dialog {
+    top: 13%;
+    left: 33%;
+
+    width: 39rem;
+    height: 40rem;
+    border-radius: 10px;
+    background-color: #FAF3E0;
+    padding: 5px 2rem 2rem 2rem;
+    border: 5px solid #987554;
+    box-shadow: 0 0 5px 2px #444444;
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(3px);
+}
+
+.form-dialog {
+    width: 100%;
+    height: 100%;
+    color: #987554;
+
+    display: grid;
+    grid-template-rows: repeat(6, auto);
+}
+
+.form-dialog > div:nth-of-type(3),
+.form-dialog > div:nth-of-type(4) {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-dialog > div:nth-of-type(5) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.form-dialog > div:first-of-type {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.form-dialog > div:first-of-type button {
+    background-image: url("./icons/close-circle-fill.svg");
+    border-radius: 1.5rem;
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.form-dialog h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: var(--font-additional);
+    text-align: center;
+}
+
+hr {
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 6px;
+    width: 70%;
+    text-align: center;
+    background-color: #987554;
+}
+
+.form-dialog input:not([type="radio"]) {
+    height: 2.3rem;
+    font-size: 1rem;
+    font-family: var(--font-additional);
+    border: none;
+    border-radius: 5px;
+    padding-left: 1rem;
+    padding-right: 6px;
+}
+
+.form-dialog label {
+    font-family: var(--font-system);
+    font-size: .9rem;
+    letter-spacing: .2rem;
+    font-weight: bold;
+}
+
+.form-dialog > div:nth-of-type(5) > div:last-of-type {
+    height: 100%;
+    padding-left: 8px;
+    border-left: 5px solid #987554;
+}
+
+fieldset {
+    border: none;
+    height: 100%;
+}
+
+legend {
+    font-family: var(--font-system);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.radio-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding-top: 5px;
+}
+
+.radio-container div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.radio-container label {
+    font-size: 1.1rem;
+    letter-spacing: -1px;
+}
+
+.radio-container input {
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    background-color: #ffffff;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-container input::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #987554;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    transform: scale(0);
+    transform-origin: center;
+    transition: all .3s ease-in;
+}
+
+.radio-container input:checked::after{
+    transform: scale(1);
+    transition: all .3s ease-out;
+}
+
+.form-button-container {
+    margin-left: auto;
+    display: flex;
+    align-items: end;
+}
+
+button[type="submit"] {
+    appearance: none;
+    cursor: pointer;
+    height: 4rem;
+    width: 10rem;
+    font-family: var(--font-additional);
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: white;
+    border: 3px solid #987554;
+    border-radius: 10px;
+    color: #987554;
+}
+
+button[type="submit"]:hover {
+    transform: translate(-4px, -3px) scale(1.03);
+    transition: all .1s ease-in-out;
+    box-shadow: 5px 5px 10px -5px #444444;
+}
+
+button[type="submit"]:active {
+    color: #ffffff;
+    background-color: #987554;
+    border-color: #ffffff;
+}
+
+.close-button-container button:hover {
+    box-shadow: 5px 5px 10px -5px #444444;
+    background-color: #987554;
+}
+
+.close-button-container button:active {
+    background-color: #D6B88A;
 }
