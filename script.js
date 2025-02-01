@@ -7,8 +7,7 @@ const bookTitle = document.querySelector(`.title-container`).querySelector(`inpu
 const bookAuthor = document.querySelector(`.author-container`).querySelector(`input`);
 const bookPages = document.querySelector(`.pages-container`).querySelector(`input`);
 
-const bookContainer = document.querySelector(`.grid-container`);
-
+const bookContainer = document.querySelector(`.grid-container`); 
 
 function showModal() {
     dialog.showModal();
@@ -21,7 +20,7 @@ function closeModal() {
 newBookButton.addEventListener(`click`, showModal);
 closeButton.addEventListener(`click`, closeModal);
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, readStatus) {
     this.title = title;
@@ -62,7 +61,7 @@ function showLibrary() {
     myLibrary.forEach((item) => {
         const generatedArticle = document.createElement(`article`);
         generatedArticle.classList.add(`generated-article`);
-        bookContainer.appendChild(generatedArticle);
+        generatedArticle.setAttribute(`data-title`, item["title"]);
 
         const generatedButtons = document.createElement(`div`);
         generatedButtons.classList.add(`generated-buttons`);
@@ -87,7 +86,26 @@ function showLibrary() {
 
         generatedTitle.textContent = item["title"];
         generatedAuthor.textContent = item["author"];
+
+
+        bookContainer.appendChild(generatedArticle);
     })
 }
 
+function removeBookFromLibrary(title) {
+    myLibrary = myLibrary.filter(item => item["title"] !== title);
+}
+
+function removeFromDisplay() {
+    let delButton = document.querySelector(`.delete-button:focus`);
+    if (event.target === delButton) {
+        const article = delButton.closest(`article`);
+        const title = article.getAttribute(`data-title`);
+
+        removeBookFromLibrary(title);
+        article.remove();
+    }
+}
+
+bookContainer.addEventListener(`click`, removeFromDisplay);
 
