@@ -524,3 +524,7 @@ button[type="submit"]:active {
 .form-dialog *:focus {
     outline: 2px solid #987554;
 }
+
+.form-dialog input:focus:invalid {
+    outline: 2px solid red;
+}
