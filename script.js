@@ -87,7 +87,10 @@ function showLibrary() {
         generatedTitle.textContent = item["title"];
         generatedAuthor.textContent = item["author"];
 
-
+        if (item["readStatus"] === "true") {
+            readButton.classList.add(`status-true`);
+        }
+        
         bookContainer.appendChild(generatedArticle);
     })
 }
@@ -96,10 +99,9 @@ function removeBookFromLibrary(title) {
     myLibrary = myLibrary.filter(item => item["title"] !== title);
 }
 
-function removeFromDisplay() {
-    let delButton = document.querySelector(`.delete-button:focus`);
-    if (event.target === delButton) {
-        const article = delButton.closest(`article`);
+function removeFromDisplay(event, button) {
+    if (event.target === button) {
+        const article = button.closest(`article`);
         const title = article.getAttribute(`data-title`);
 
         removeBookFromLibrary(title);
@@ -107,5 +109,29 @@ function removeFromDisplay() {
     }
 }
 
-bookContainer.addEventListener(`click`, removeFromDisplay);
+bookContainer.addEventListener(`click`, (event) => {
 
+    let delButton = document.querySelector(`.delete-button:focus`);
+    let readButton = document.querySelector(`.read-button:focus`);
+    removeFromDisplay(event, delButton);
+    markAsFavorite(event, readButton);
+});
+
+function markAsFavorite(event, button) {
+    if(event.target === button) {
+        const article = button.closest(`article`);
+        const title = article.getAttribute(`data-title`);
+
+        myLibrary.forEach(item => {
+            if (item["title"] === title) {
+                if (item["readStatus"] === "true") {
+                    item["readStatus"] = "false";
+                    button.classList.remove(`status-true`);
+                } else {
+                    item["readStatus"] = "true";
+                    button.classList.add(`status-true`);
+                }
+            }
+        })
+    }
+}
