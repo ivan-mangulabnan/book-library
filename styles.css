@@ -274,14 +274,6 @@ main {
     background-size: contain;
 }
 
-.read-button:hover {
-    background-color: #FF66B2;
-}
-
-.read-button:active {
-    background-color: #FF99CC;
-}
-
 .delete-button:hover {
     background-color: #FF5733;
 }
@@ -523,4 +515,8 @@ button[type="submit"]:active {
 
 .close-button-container button:active {
     background-color: #D6B88A;
+}
+
+.read-button.status-true {
+    background-color: #FF66B2;
 }
