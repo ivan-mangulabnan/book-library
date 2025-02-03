@@ -90,9 +90,11 @@ function showLibrary() {
         if (item["readStatus"] === "true") {
             readButton.classList.add(`status-true`);
         }
-        
+
         bookContainer.appendChild(generatedArticle);
     })
+    
+    form.reset();
 }
 
 function removeBookFromLibrary(title) {
