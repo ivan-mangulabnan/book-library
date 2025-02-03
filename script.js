@@ -38,8 +38,12 @@ function addBookToLibrary() {
 const submitButton = document.querySelector(`button[type="submit"]`);
 
 submitButton.addEventListener(`click`, () => {
-    addBookToLibrary();
-    closeModal();
+    if (form.checkValidity()) {
+        addBookToLibrary();
+        closeModal();
+    } else {
+        form.reportValidity();
+    }
 })
 
 const form = document.querySelector(`.form-dialog`);
