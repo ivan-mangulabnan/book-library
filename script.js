@@ -14,6 +14,7 @@ function showModal() {
 }
 
 function closeModal() {
+    form.reset();
     dialog.close();
 }
 
@@ -93,7 +94,7 @@ function showLibrary() {
 
         bookContainer.appendChild(generatedArticle);
     })
-    
+
     form.reset();
 }
 
@@ -137,3 +138,9 @@ function markAsFavorite(event, button) {
         })
     }
 }
+
+form.addEventListener(`keydown`, (event) => {
+    if(event.key === `Escape`) {
+        form.reset();
+    }
+});
