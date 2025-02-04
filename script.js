@@ -40,7 +40,7 @@ const submitButton = document.querySelector(`button[type="submit"]`);
 submitButton.addEventListener(`click`, () => {
     if (form.checkValidity()) {
         addBookToLibrary();
-        closeModal();
+        dialog.close();
     } else {
         form.reportValidity();
     }
