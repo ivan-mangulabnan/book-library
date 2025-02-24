@@ -32,6 +32,56 @@ class Book {
         this.readStatus = readStatus;
         Book.myLibrary.unshift(this);
     }
+
+    static clearContainer() {
+        if (Book.myLibrary.length > 1) {
+            const duplicateArticles = bookContainer.querySelectorAll(`article`);
+            duplicateArticles.forEach(item => item.remove());
+        }
+    }
+
+    static showLibrary() {
+
+        Book.clearContainer();
+    
+        Book.myLibrary.forEach((item) => {
+            const generatedArticle = document.createElement(`article`);
+            generatedArticle.classList.add(`generated-article`);
+            generatedArticle.setAttribute(`data-title`, item["title"]);
+    
+            const generatedButtons = document.createElement(`div`);
+            generatedButtons.classList.add(`generated-buttons`);
+            generatedArticle.appendChild(generatedButtons);
+    
+            const readButton = document.createElement(`button`);
+            readButton.classList.add(`read-button`);
+            generatedButtons.appendChild(readButton);
+    
+            const deleteButton = document.createElement(`button`);
+            deleteButton.classList.add(`delete-button`);
+            generatedButtons.appendChild(deleteButton);
+    
+            const generatedTitle = document.createElement(`h2`);
+            generatedTitle.classList.add(`generated-title`);
+            generatedArticle.appendChild(generatedTitle);
+    
+            const generatedAuthor = document.createElement(`p`);
+            generatedAuthor.classList.add(`generated-author`);
+            generatedArticle.appendChild(generatedAuthor);
+    
+    
+            generatedTitle.textContent = item["title"];
+            generatedAuthor.textContent = item["author"];
+    
+            if (item["readStatus"] === "true") {
+                readButton.classList.add(`status-true`);
+            }
+    
+            bookContainer.appendChild(generatedArticle);
+        })
+    
+        form.reset();
+    }
 }
 
 const submitButton = document.querySelector(`button[type="submit"]`);
@@ -48,58 +98,8 @@ submitButton.addEventListener(`click`, () => {
 const form = document.querySelector(`.form-dialog`);
 form.addEventListener(`submit`, (event) => {
     event.preventDefault();
-    showLibrary();
+    Book.showLibrary();
 })
-
-function clearContainer() {
-    if (Book.myLibrary.length > 1) {
-        const duplicateArticles = bookContainer.querySelectorAll(`article`);
-        duplicateArticles.forEach(item => item.remove());
-    }
-}
-
-function showLibrary() {
-
-    clearContainer();
-
-    Book.myLibrary.forEach((item) => {
-        const generatedArticle = document.createElement(`article`);
-        generatedArticle.classList.add(`generated-article`);
-        generatedArticle.setAttribute(`data-title`, item["title"]);
-
-        const generatedButtons = document.createElement(`div`);
-        generatedButtons.classList.add(`generated-buttons`);
-        generatedArticle.appendChild(generatedButtons);
-
-        const readButton = document.createElement(`button`);
-        readButton.classList.add(`read-button`);
-        generatedButtons.appendChild(readButton);
-
-        const deleteButton = document.createElement(`button`);
-        deleteButton.classList.add(`delete-button`);
-        generatedButtons.appendChild(deleteButton);
-
-        const generatedTitle = document.createElement(`h2`);
-        generatedTitle.classList.add(`generated-title`);
-        generatedArticle.appendChild(generatedTitle);
-
-        const generatedAuthor = document.createElement(`p`);
-        generatedAuthor.classList.add(`generated-author`);
-        generatedArticle.appendChild(generatedAuthor);
-
-
-        generatedTitle.textContent = item["title"];
-        generatedAuthor.textContent = item["author"];
-
-        if (item["readStatus"] === "true") {
-            readButton.classList.add(`status-true`);
-        }
-
-        bookContainer.appendChild(generatedArticle);
-    })
-
-    form.reset();
-}
 
 function removeBookFromLibrary(title) {
     Book.myLibrary = Book.myLibrary.filter(item => item["title"] !== title);
