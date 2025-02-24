@@ -21,25 +21,24 @@ function closeModal() {
 newBookButton.addEventListener(`click`, showModal);
 closeButton.addEventListener(`click`, closeModal);
 
-let myLibrary = [];
+class Book {
 
-function Book(title, author, pages, readStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-}
+    static myLibrary = [];
 
-function addBookToLibrary() {
-    let bookReadStatus = document.querySelector(`.radio-container input:checked`);
-    myLibrary.unshift(new Book(`${bookTitle.value}`, `${bookAuthor.value}`, `${bookPages.value}`, `${bookReadStatus.value}`));
+    constructor(title, author, pages, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+        Book.myLibrary.unshift(this);
+    }
 }
 
 const submitButton = document.querySelector(`button[type="submit"]`);
 
 submitButton.addEventListener(`click`, () => {
     if (form.checkValidity()) {
-        addBookToLibrary();
+        new Book(`${bookTitle.value}`, `${bookAuthor.value}`, `${bookPages.value}`, `${document.querySelector(`.radio-container input:checked`).value}`);
         dialog.close();
     } else {
         form.reportValidity();
@@ -53,7 +52,7 @@ form.addEventListener(`submit`, (event) => {
 })
 
 function clearContainer() {
-    if (myLibrary.length > 1) {
+    if (Book.myLibrary.length > 1) {
         const duplicateArticles = bookContainer.querySelectorAll(`article`);
         duplicateArticles.forEach(item => item.remove());
     }
@@ -63,7 +62,7 @@ function showLibrary() {
 
     clearContainer();
 
-    myLibrary.forEach((item) => {
+    Book.myLibrary.forEach((item) => {
         const generatedArticle = document.createElement(`article`);
         generatedArticle.classList.add(`generated-article`);
         generatedArticle.setAttribute(`data-title`, item["title"]);
@@ -103,7 +102,7 @@ function showLibrary() {
 }
 
 function removeBookFromLibrary(title) {
-    myLibrary = myLibrary.filter(item => item["title"] !== title);
+    Book.myLibrary = Book.myLibrary.filter(item => item["title"] !== title);
 }
 
 function removeFromDisplay(event, button) {
@@ -129,7 +128,7 @@ function markAsFavorite(event, button) {
         const article = button.closest(`article`);
         const title = article.getAttribute(`data-title`);
 
-        myLibrary.forEach(item => {
+        Book.myLibrary.forEach(item => {
             if (item["title"] === title) {
                 if (item["readStatus"] === "true") {
                     item["readStatus"] = "false";
